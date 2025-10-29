@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Feliz 2° mes — Abigail 💗</title>
+
+    <!-- AOS (animaciones al hacer scroll) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <!-- Swiper (carrusel) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+
+    <style>
+      :root {
+        --bg: #fff7fb;
+        --pink-1: #ffd9e6;
+        --pink-2: #ffc7da;
+        --accent: #ff9ac5;
+        --muted: #f6eaf0;
+        --text: #2b2b2b;
+        --card-shadow: 0 6px 20px rgba(219, 136, 170, 0.18);
+        font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+      }
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: linear-gradient(180deg, var(--bg), #fff);
+        color: var(--text);
+      }
+
+      .wrap {
+        max-width: 1100px;
+        margin: 28px auto;
+        padding: 20px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .logo {
+        width: 84px;
+        height: 84px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--card-shadow);
+      }
+
+      .logo img {
+        max-width: 80%;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+      }
+
+      h1 {
+        font-size: clamp(20px, 4vw, 34px);
+        margin: 0;
+      }
+
+      p.lead {
+        margin: 6px 0 0;
+        color: #6b6b6b;
+      }
+
+      .btn-container {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-left: auto;
+      }
+
+      .btn {
+        background: var(--accent);
+        border: 0;
+        color: white;
+        padding: 10px 14px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .hero {
+        margin: 18px 0;
+        padding: 22px;
+        border-radius: 20px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 250, 253, 0.6),
+          rgba(255, 245, 248, 0.85)
+        );
+        box-shadow: var(--card-shadow);
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 18px;
+      }
+
+      .hero-left {
+        padding: 8px;
+      }
+
+      .hero-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .balloon {
+        width: 120px;
+        height: 120px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, var(--pink-1), var(--pink-2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(255, 150, 190, 0.18);
+      }
+
+      .gallery {
+        margin-top: 20px;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 720px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+      }
+
+      .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+      }
+
+      .slide-img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      .timeline {
+        margin-top: 22px;
+        padding: 18px;
+        border-radius: 14px;
+        background: var(--muted);
+        box-shadow: var(--card-shadow);
+      }
+
+      .step {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        padding: 12px 0;
+        border-bottom: 1px dashed rgba(200, 130, 170, 0.15);
+      }
+
+      .step:last-child {
+        border-bottom: 0;
+      }
+
+      .dot {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--pink-2), var(--accent));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        padding: 0 10px;
+      }
+
+      .reasons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .card {
+        background: #fff;
+        padding: 14px;
+        border-radius: 12px;
+        box-shadow: var(--card-shadow);
+      }
+
+      .card-typing {
+        font-family: "Courier New", monospace;
+        padding: 18px;
+        border-radius: 12px;
+      }
+
+      .heart {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0.98;
+        transform-origin: center center;
+      }
+
+      /* Responsive */
+      @media (max-width: 880px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .swiper {
+          height: 380px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        header {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .btn-container {
+          margin-left: 0;
+          justify-content: center;
+          width: 100%;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-right {
+          margin-top: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header data-aos="fade-right">
+        <div class="logo">
+          <img src="assets/hello-kitty.png" alt="Hello" />
+        </div>
+        <div>
+          <h1>Felices 2 meses de novios, bombona 💗</h1>
+          <p class="lead">
+            29 de octubre de 2025 — Un regalo hecho con todo mi cariño
+          </p>
+        </div>
+        <div class="btn-container">
+          <button class="btn" id="playToggle">Reproducir música</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" data-aos="zoom-in">
+          <div class="hero-left">
+            <h2 style="margin-top: 0">Para ti, mi amor 🌸</h2>
+            <p>
+              Hola, mi pequeña niña. Te hice esta página web con mucho cariño;
+              aquí he recopilado de manera generalizada algunos de nuestros
+              recuerdos, fotos y cosas que pienso de ti. Espero que te guste y
+              que la disfrutes tanto como yo disfruto cada momento contigo.
+            </p>
+
+            <div
+              style="
+                margin-top: 12px;
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+              "
+            >
+              <div class="card">
+                <strong>Personajes:</strong>
+                <div>Hello Kitty • My Melody</div>
+                <p style="font-size: 12px; color: #7b7b7b">
+                  (Elegí estos personajes porque sé que son los que más te
+                  gustan)
+                </p>
+              </div>
+              <div class="card">
+                <strong>Canción:</strong>
+                <div>
+                  "Just the Two of Us (feat. Bill Withers) - Grover Washington
+                  Jr."
+                </div>
+                <p style="font-size: 12px; color: #7b7b7b">
+                  (Seleccioné esta canción porque me la dedicaste una vez y
+                  siempre me hace pensar en ti)
+                </p>
+              </div>
+            </div>
+
+            <div style="margin-top: 14px" class="card-typing">
+              <div id="typedMessage">Abigail, esto es sólo el principio...</div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="balloon" id="characters">
+              <img src="assets/melody.gif" alt="My Melody" style="width: 80%" />
+            </div>
+          </div>
+        </section>
+
+        <!-- GALERÍA -->
+        <section class="gallery" data-aos="fade-up">
+          <h3>Galería de momentos</h3>
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="assets/foto1.jpg" class="slide-img" alt="Foto 1" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/foto2.jpg" class="slide-img" alt="Foto 2" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/foto3.jpg" class="slide-img" alt="Foto 3" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/foto4.jpg" class="slide-img" alt="Foto 4" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/foto5.jpg" class="slide-img" alt="Foto 5" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/foto6.jpg" class="slide-img" alt="Foto 6" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/foto7.jpg" class="slide-img" alt="Foto 7" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/foto8.jpg" class="slide-img" alt="Foto 8" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/foto9.jpg" class="slide-img" alt="Foto 9" />
+              </div>
+              <div class="swiper-slide">
+                <img src="assets/foto10.jpg" class="slide-img" alt="Foto 10" />
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section class="timeline" data-aos="fade-up">
+          <h3>
+            A continuación, te cuento la historia de cada foto de la galería:
+          </h3>
+
+          <div class="step">
+            <div class="dot">01</div>
+            <div>
+              <strong>29 de agosto de 2025 a las 5:10 p.m.</strong>
+              <div class="muted">
+                Nuestra primera cita y el primer día que nos convertimos en
+                novios. 🥰
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">02</div>
+            <div>
+              <strong>01 de septiembre de 2025 a las 4:23 p.m.</strong>
+              <div class="muted">
+                La primera vez que me acompañaste a la barbería y la primera vez
+                que te regalé flores. 🌸
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">03</div>
+            <div>
+              <strong>03 de septiembre de 2025 a las 2:39 p.m.</strong>
+              <div class="muted">
+                El día de mi graduación, y tú siendo mi mayor apoyo y
+                motivación. ❤️
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">04</div>
+            <div>
+              <strong>10 de septiembre de 2025 a las 7:52 p.m.</strong>
+              <div class="muted">
+                Esta foto fue en el Monster Gym, entrenando juntos y disfrutando
+                cada momento. 💪
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">05</div>
+            <div>
+              <strong>11 de septiembre de 2025 a las 5:56 p.m.</strong>
+              <div class="muted">
+                Nuestro primer museo juntos, el Museo Soumaya. Me encantó
+                explorar el arte contigo y compartir esa experiencia. 🎨
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">06</div>
+            <div>
+              <strong>29 de septiembre de 2025 a las 10:00 p.m.</strong>
+              <div class="muted">
+                Celebrando nuestro primer mes juntos. Un día especial que
+                siempre guardaré en mi corazón. 💖
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">07</div>
+            <div>
+              <strong>03 de octubre de 2025 a las 12:59 p.m.</strong>
+              <div class="muted">
+                El día que fuimos al restaurante Vips a disfrutar enchiladas
+                suizas y chilaquiles, momentos que siempre recordaré. 😋
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">08</div>
+            <div>
+              <strong>06 de octubre de 2025 a las 6:43 p.m.</strong>
+              <div class="muted">
+                Otra foto en el gimnasio que me encanta porque refleja lo bien
+                que nos vemos juntos. 🫶
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">09</div>
+            <div>
+              <strong>10 de octubre de 2025 a la 1:19 a.m.</strong>
+              <div class="muted">
+                La primera vez que nos pusimos mascarillas y nos desvelamos
+                juntos en tu casa. Fue muy divertido. 😴💖
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">10</div>
+            <div>
+              <strong>19 de octubre de 2025 a las 9:18 a.m.</strong>
+              <div class="muted">
+                El día de tu cumpleaños, un día lleno de alegría y cariño por
+                ti. 🎉❤️
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RAZONES -->
+        <section style="margin-top: 18px">
+          <h3>
+            Estas son algunas de las millones de actitudes, aspectos, acciones y
+            rasgos que amo, aprecio y admiro de ti:
+          </h3>
+          <div class="reasons">
+            <div class="card">
+              ¡Tu sonrisa tan hermosa, capaz de iluminar todos mis días!
+            </div>
+            <div class="card">
+              ¡La forma en que me besas, me abrazas y me dices que me amas!
+            </div>
+            <div class="card">
+              ¡La pasión y el amor que pones en todo lo que haces!
+            </div>
+            <div class="card">
+              ¡La confianza que depositas en mí y el permitir que conozca todas
+              tus facetas!
+            </div>
+            <div class="card">
+              ¡Tu cabello largo, tus cejas perfectamente definidas, tus risadas
+              pestañas, tus brillantes ojos, tu nariz perfecta, tus labios sabor
+              fresita, tu quijada tan bien formada… la estructura completa de tu
+              rostro es simplemente fascinante!
+            </div>
+            <div class="card">
+              ¡Tu cuerpo, tu figura, tu belleza exterior e interior!
+            </div>
+            <div class="card">
+              ¡Tu arte: todas las cosas maravillosas, lindas, artísticas y
+              creativas que haces!
+            </div>
+            <div class="card">
+              ¡Lo inteligente, amable, acomedida, empática, creativa y paciente
+              que eres…!
+            </div>
+          </div>
+        </section>
+
+        <!-- MENSAJE FINAL -->
+        <section style="margin-top: 22px" data-aos="fade-up">
+          <div class="card" style="text-align: center">
+            <h3>
+              ¡En fin, jamás dejare de conocerte y estoy sumamente feliz de que
+              seas mi novia!
+            </h3>
+            <p>
+              Abigail, gracias por estos 2 meses siendo tu novio. Te amo mucho.
+              —
+              <em>Con todo mi corazón</em>
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer style="margin-top: 20px; text-align: center; color: #8a6b7a">
+        <small>Hecho con 💗 — Feliz 2° mes de novios 29/10/2025</small>
+      </footer>
+    </div>
+
+    <audio id="bgMusic" loop preload="none">
+      <source src="assets/just_the_two_of_us.mp3" type="audio/mpeg" />
+      Tu navegador no soporta audio.
+    </audio>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+      AOS.init({ duration: 700, once: true });
+
+      const music = document.getElementById("bgMusic");
+      const playBtn = document.getElementById("playToggle");
+      playBtn.addEventListener("click", () => {
+        if (music.paused) {
+          music.play();
+          playBtn.textContent = "Pausar música";
+        } else {
+          music.pause();
+          playBtn.textContent = "Reproducir música";
+        }
+      });
+
+      // Swiper
+      const swiper = new Swiper(".mySwiper", {
+        loop: true,
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        autoplay: { delay: 3500 },
+      });
+
+      // Typing effect simple
+      const typed = document.getElementById("typedMessage");
+      const text = " Abigail, cada día contigo es mi lugar favorito. ¡TE AMO!";
+      let i = 0;
+      function typeWriter() {
+        if (i < text.length) {
+          typed.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 38);
+        }
+      }
+      // start paused until visible
+      setTimeout(() => typeWriter(), 900);
+
+      // Floating hearts (decorativo)
+      function spawnHeart() {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.style.left = Math.random() * 90 + "%";
+        h.style.top = 60 + Math.random() * 30 + "%";
+        h.style.fontSize = 12 + Math.random() * 30 + "px";
+        h.textContent = "💗";
+        document.body.appendChild(h);
+        anime({
+          targets: h,
+          translateY: -200,
+          opacity: [1, 0],
+          scale: [1, 1.8],
+          duration: 2800,
+          easing: "easeOutCubic",
+          complete: () => h.remove(),
+        });
+      }
+      setInterval(spawnHeart, 1200);
+    </script>
+  </body>
+</html>
