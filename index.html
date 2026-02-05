@@ -1,254 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.ico" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-
+    <meta charset="UTF-8" />
     <title>Felices 2 meses de novios, bombona 💗</title>
+
+    <script src="js/registraServiceWorker.js"></script>
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#4caf50" />
+    <link rel="icon" sizes="32x32" href="favicon.ico" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <link rel="stylesheet" href="css/estilos.css" />
 
     <!-- AOS (animaciones al hacer scroll) -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <!-- Swiper (carrusel) -->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-    />
-
-    <style>
-      :root {
-        --bg: #fff7fb;
-        --pink-1: #ffd9e6;
-        --pink-2: #ffc7da;
-        --accent: #ff9ac5;
-        --muted: #f6eaf0;
-        --text: #2b2b2b;
-        --card-shadow: 0 6px 20px rgba(219, 136, 170, 0.18);
-        font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial;
-      }
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        background: linear-gradient(180deg, var(--bg), #fff);
-        color: var(--text);
-      }
-
-      .wrap {
-        max-width: 1100px;
-        margin: 28px auto;
-        padding: 20px;
-      }
-
-      header {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-      }
-
-      .logo {
-        width: 84px;
-        height: 84px;
-        border-radius: 18px;
-        background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: var(--card-shadow);
-      }
-
-      .logo img {
-        max-width: 80%;
-        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
-      }
-
-      h1 {
-        font-size: clamp(20px, 4vw, 34px);
-        margin: 0;
-      }
-
-      p.lead {
-        margin: 6px 0 0;
-        color: #6b6b6b;
-      }
-
-      .btn-container {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        margin-left: auto;
-      }
-
-      .btn {
-        background: var(--accent);
-        border: 0;
-        color: white;
-        padding: 10px 14px;
-        border-radius: 10px;
-        cursor: pointer;
-      }
-
-      .hero {
-        margin: 18px 0;
-        padding: 22px;
-        border-radius: 20px;
-        background: linear-gradient(
-          90deg,
-          rgba(255, 250, 253, 0.6),
-          rgba(255, 245, 248, 0.85)
-        );
-        box-shadow: var(--card-shadow);
-        display: grid;
-        grid-template-columns: 1fr 320px;
-        gap: 18px;
-      }
-
-      .hero-left {
-        padding: 8px;
-      }
-
-      .hero-right {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .balloon {
-        width: 120px;
-        height: 120px;
-        border-radius: 18px;
-        background: linear-gradient(180deg, var(--pink-1), var(--pink-2));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 10px 30px rgba(255, 150, 190, 0.18);
-      }
-
-      .gallery {
-        margin-top: 20px;
-      }
-
-      .swiper {
-        width: 100%;
-        height: 720px;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: var(--card-shadow);
-      }
-
-      .swiper-slide {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #fff;
-      }
-
-      .slide-img {
-        height: 100%;
-        width: auto;
-        object-fit: cover;
-        border-radius: 12px;
-      }
-
-      .timeline {
-        margin-top: 22px;
-        padding: 18px;
-        border-radius: 14px;
-        background: var(--muted);
-        box-shadow: var(--card-shadow);
-      }
-
-      .step {
-        display: flex;
-        gap: 14px;
-        align-items: flex-start;
-        padding: 12px 0;
-        border-bottom: 1px dashed rgba(200, 130, 170, 0.15);
-      }
-
-      .step:last-child {
-        border-bottom: 0;
-      }
-
-      .dot {
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, var(--pink-2), var(--accent));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 700;
-        padding: 0 10px;
-      }
-
-      .reasons {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 14px;
-        margin-top: 18px;
-      }
-
-      .card {
-        background: #fff;
-        padding: 14px;
-        border-radius: 12px;
-        box-shadow: var(--card-shadow);
-      }
-
-      .card-typing {
-        font-family: "Courier New", monospace;
-        padding: 18px;
-        border-radius: 12px;
-      }
-
-      .heart {
-        position: absolute;
-        pointer-events: none;
-        opacity: 0.98;
-        transform-origin: center center;
-      }
-
-      /* Responsive */
-      @media (max-width: 880px) {
-        .hero {
-          grid-template-columns: 1fr;
-        }
-
-        .swiper {
-          height: 468px;
-        }
-      }
-
-      @media (max-width: 600px) {
-        header {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-
-        .btn-container {
-          margin-left: 0;
-          justify-content: center;
-          width: 100%;
-        }
-
-        .hero {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-
-        .hero-right {
-          margin-top: 18px;
-        }
-      }
-    </style>
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
   </head>
   <body>
     <div class="wrap">
@@ -284,8 +54,7 @@
                 display: flex;
                 gap: 10px;
                 flex-wrap: wrap;
-              "
-            >
+              ">
               <div class="card">
                 <strong>Personajes:</strong>
                 <div>Hello Kitty • My Melody</div>
@@ -536,10 +305,8 @@
       </main>
 
       <footer style="margin-top: 20px; text-align: center; color: #8a6b7a">
-        <small
-          >Hecho con 💗 | De Usiel Colin Pérez para Abigail Jatnael Bello
-          Morales</small
-        >
+        <small>Hecho con 💗 | De Usiel Colin Pérez para Abigail Jatnael Bello
+          Morales</small>
       </footer>
     </div>
 
@@ -551,7 +318,8 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script>
       AOS.init({ duration: 700, once: true });
 
